@@ -41,6 +41,7 @@ class Account
 
   # Account#instance_method
   def instance_info
+    self
     "I am an instance method of Account with id #{self.id} and a balance of #{balance} !"
   end
 
@@ -57,4 +58,8 @@ end
 # user_balance = gets.chomp.to_i
 
 account = Account.new(3, 100)
+
+other_account = Account.new(5, 250)
+
+
 binding.pry
