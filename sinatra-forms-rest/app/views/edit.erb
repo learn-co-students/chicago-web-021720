@@ -1,0 +1,19 @@
+<h1>Edit Book</h1>
+
+<form action="/books/<%= @book.id%>" method="post">
+  <input type="hidden" name="_method" value="put">
+  <label for="book-title">Title:</label>
+  <input id="book-title" type="text" name="title" value="<%= @book.title %>">
+  <br>
+  <label for="book-author">Author:</label>
+  <input id="book-author" type="text" name="author" value="<%= @book.author %>">
+  <br>
+  <label for="book-snippet">Snippet:</label>
+  <!-- <input id="book-snippet" type="text" value="Book Snippet"> -->
+  <textarea id="book-snippet" name="snippet" rows="4" cols="50">
+    <%= @book.snippet %>
+  </textarea>
+  <input type="submit" value="Update Book">
+</form>
+
+<p>(back <a href="/books">home</a>)</p>
