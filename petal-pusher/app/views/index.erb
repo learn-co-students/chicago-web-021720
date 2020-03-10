@@ -1,0 +1,5 @@
+<% @flowers.each do |flower| %>
+  <p><a href="/flowers/<%= flower.id %>">A <%= flower.color %> <%= flower.kind %>...</a></p>
+<% end %>
+
+<a href="/flowers/new">Add a Flower to Inventory!</a>
