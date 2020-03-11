@@ -1,0 +1,30 @@
+<section>
+  <% if @errors %>
+    <% @errors.each do |error| %>
+      <h3><%= error %></h3>
+    <% end %>
+  <% end %>
+
+  <form action="/books" method="POST">
+    <label>
+      Title:
+      <input type="text" name="book[title]" value="<%= @book.title %>">
+    </label>
+
+    <label>
+      Snippet:
+      <input type="text" name="book[snippet]" value="<%= @book.snippet %>">
+    </label>
+
+    <label>
+      Author:
+      <select name="book[author_id]">
+        <% @authors.each do |author| %>
+          <option value="<%= author.id %>"><%= author.name %></option>
+        <% end %>
+      </select>
+    </label>
+
+    <input type="submit">
+  </form>
+</section>
