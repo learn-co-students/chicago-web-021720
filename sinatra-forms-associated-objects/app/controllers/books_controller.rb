@@ -25,7 +25,7 @@ class BooksController < ApplicationController
   post '/books' do
     p "*************************"
     p params
-    @book = Book.new(params)
+    @book = Book.new(params[:book])
     if @book.save
       redirect "/books/#{@book.id}"
     else
