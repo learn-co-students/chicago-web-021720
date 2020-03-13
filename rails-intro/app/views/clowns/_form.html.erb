@@ -1,0 +1,37 @@
+<%= form_with(model: clown, local: true) do |form| %>
+  <% if clown.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(clown.errors.count, "error") %> prohibited this clown from being saved:</h2>
+
+      <ul>
+        <% clown.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :age %>
+    <%= form.number_field :age %>
+  </div>
+
+  <div class="field">
+    <%= form.label :phrase %>
+    <%= form.text_field :phrase %>
+  </div>
+
+  <div class="field">
+    <%= form.label :is_cool %>
+    <%= form.check_box :is_cool %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

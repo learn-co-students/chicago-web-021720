@@ -1,0 +1,7 @@
+<h1>Hello YoYos!</h1>
+
+<%= link_to "Create New", "/yo_yos/new" %>
+
+<% @yo_yos.each do |yo_yo| %>
+  <p><%= yo_yo.name %></p>
+<% end %>

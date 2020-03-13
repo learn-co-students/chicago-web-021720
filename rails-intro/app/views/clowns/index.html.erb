@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Clowns</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Phrase</th>
+      <th>Is cool</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @clowns.each do |clown| %>
+      <tr>
+        <td><%= clown.name %></td>
+        <td><%= clown.age %></td>
+        <td><%= clown.phrase %></td>
+        <td><%= clown.is_cool %></td>
+        <td><%= link_to 'Show', clown %></td>
+        <td><%= link_to 'Edit', edit_clown_path(clown) %></td>
+        <td><%= link_to 'Destroy', clown, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Clown', new_clown_path %>

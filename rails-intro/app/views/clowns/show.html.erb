@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @clown.name %>
+</p>
+
+<p>
+  <strong>Age:</strong>
+  <%= @clown.age %>
+</p>
+
+<p>
+  <strong>Phrase:</strong>
+  <%= @clown.phrase %>
+</p>
+
+<p>
+  <strong>Is cool:</strong>
+  <%= @clown.is_cool %>
+</p>
+
+<%= link_to 'Edit', edit_clown_path(@clown) %> |
+<%= link_to 'Back', clowns_path %>
