@@ -1,0 +1,22 @@
+<form action="/cohorts" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <label>
+    <input type="text" name="cohort[name]" value="<%= @cohort.name %>">
+  </label>
+
+  <input type="submit">
+</form>
+
+<!-- same as form_with url: "/cohorts" -->
+<%= form_tag "/cohorts" do %>
+  <%= label_tag 'cohort[name]', "Name:" %>
+  <%= text_field_tag 'cohort[name]', @cohort.name %>
+  <%= submit_tag 'Create Cohort' %>
+<% end %>
+
+<!-- same as form_with model: @cohort -->
+<%= form_for @cohort do |f| %>
+  <%= f.label 'name' %>
+  <%= f.text_field 'name' %>
+  <%= f.submit %>
+<% end %>
