@@ -1,0 +1,19 @@
+<h1>Create a Student</h1>
+
+<!--
+<%= form_tag "/students" do %>
+  <%= label_tag 'student[name]', 'Name' %>
+  <%= text_field_tag 'student[name]' %>
+  <%= label_tag 'student[cohort_id]', 'Cohort' %>
+  <%= select_tag 'student[cohort_id]', options_from_collection_for_select(@cohorts, 'id', 'name') %>
+  <%= submit_tag "Create Student"%>
+<% end %> 
+-->
+
+<%= form_for @student do |f| %>
+  <%= f.label 'name', 'Name:' %>
+  <%= f.text_field 'name' %>
+  <%= f.label 'cohort_id', 'Cohort:' %>
+  <%= f.collection_select('cohort_id', @cohorts, 'id', 'name') %>
+  <%= f.submit %>
+<% end %>
