@@ -1,0 +1,7 @@
+<h1> Here's some meetings. </h1>
+
+<%= link_to "Schedule New", new_peer_mentorship_path %>
+
+<% @peer_mentorships.each do |pm| %>
+  <p><%= link_to "#{pm.mentor.name} mentoring #{pm.peer.name}", peer_mentorships_path %></p>
+<% end %>

@@ -1,0 +1,20 @@
+<h1>Schedule!</h1>
+
+<% if @errors %>
+  <% @errors.each do |error| %>
+    <p><%= error %></p>
+  <% end %>
+<% end %>
+
+<%= form_for @peer_mentorship do |f| %>
+  Topic: <%= f.text_field :topic %>
+  <br>
+  Meeting At: <%= f.datetime_select :meeting_at %>
+  <br>
+  Mentor: <%= f.collection_select :mentor_id, @students, :id, :name %>
+  <br>
+  Peer: <%= f.collection_select :peer_id, @students, :id, :name %>
+  <br>
+  Notes: <%= f.text_field :notes %>
+  <%= f.submit %>
+<% end %>

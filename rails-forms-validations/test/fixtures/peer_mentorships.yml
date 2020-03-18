@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  mentor_id: 1
+  peer_id: 1
+  topic: MyString
+  meeting_at: 2020-03-18 09:20:29
+  notes: MyText
+
+two:
+  mentor_id: 1
+  peer_id: 1
+  topic: MyString
+  meeting_at: 2020-03-18 09:20:29
+  notes: MyText

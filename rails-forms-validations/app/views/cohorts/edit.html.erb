@@ -1,0 +1,20 @@
+<%= @cohort.name %>
+<!-- <form action="/cohorts/<%= @cohort.id %>" method="post">
+  <input name="_method" type="hidden" value="patch" />
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <label>
+    <input type="text" name="cohort[name]" value="<%= @cohort.name %>">
+  </label>
+
+  <input type="submit">
+</form> -->
+<!--
+<%= form_tag cohort_path(@cohort), method: :patch do |f| %>
+  <%= text_field_tag 'cohort[name]' %>
+  <%= submit_tag %>
+<% end %> -->
+
+<%= form_for @cohort do |f| %>
+  Cohort Name<%= f.text_field :cohort_name %> 
+  <%= f.submit %>
+<% end %>
