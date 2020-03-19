@@ -1,0 +1,6 @@
+<h1><%= @user.name.titleize %>'s Shirts:</h1>
+
+<% @user.shirts.each do |shirt| %>
+  <p><%= shirt.list_details %></p>
+<% end %>
+

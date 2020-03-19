@@ -1,0 +1,9 @@
+<h1>All Shirts</h1>
+
+<%= link_to "Create a Shirt", new_shirt_path %>
+
+<ul>
+  <% @shirts.each do |shirt| %>
+    <li><%= link_to shirt.list_details, shirt %></li>
+  <% end %>
+</ul>

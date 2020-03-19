@@ -1,0 +1,14 @@
+<h1>Buy this shirt!</h1>
+<p><%= @shirt.list_details %></p>
+
+<% @sale.errors.full_messages.each do |error| %>
+  <p><%= error %></p>
+<% end %>
+
+<%= form_tag shirt_sales_path(@shirt) do %>
+  <%= label_tag 'sale[quantity]', 'Quantity:' %> 
+  <%= number_field_tag 'sale[quantity]' %>
+  <%= label_tag 'sale[buyer_id]', 'Buyer:' %> 
+  <%= select_tag 'sale[buyer_id]', options_from_collection_for_select(@users, :id, :name) %>
+  <%= submit_tag "Purchase!" %>
+<% end %>

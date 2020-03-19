@@ -1,0 +1,11 @@
+<h1>Presenting a shirt by <%= link_to @shirt.creator.name, @shirt.creator %>...</h1>
+
+<%= link_to "Buy this Shirt!", new_shirt_sale_path(@shirt) %>
+
+<ul>
+  <li>Color: <%= @shirt.color.titleize %></li>
+  <li>Message: <%= @shirt.message %></li>
+  <li>Price: <%= number_to_currency(@shirt.price) %></li>
+</ul>
+
+<%= link_to "Back to Shirts", shirts_path %>

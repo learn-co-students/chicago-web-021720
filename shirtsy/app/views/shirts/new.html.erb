@@ -1,0 +1,22 @@
+<h1>YO!</h1>
+
+<% @shirt.errors.full_messages.each do |error| %>
+  <p><%= error %></p>
+<% end %>
+
+<%= form_for @shirt do |f| %>
+  <%= f.label :color %>
+  <%= f.text_field :color %>
+  <br>
+  <%= f.label :message %>
+  <%= f.text_field :message %>
+  <br>
+  <%= f.label :image %>
+  <%= f.text_field :image %>
+  <br>
+  <%= f.label :price %>
+  <%= f.number_field :price %>
+  <br>
+  <%= f.collection_select :creator_id, @users, :id, :name %>
+  <%= f.submit %>
+<% end %>
