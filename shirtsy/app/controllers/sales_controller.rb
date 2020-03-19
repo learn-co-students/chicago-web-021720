@@ -1,24 +1,22 @@
 class SalesController < ApplicationController
+  before_action :set_shirt, only: [:new, :create]
 
   def index
     @sales = Sale.all
-    p @sales
   end
 
   def new
     @sale = Sale.new
-    @users = User.all
-    @shirt = Shirt.find_by(id: params[:shirt_id])
+    set_users
   end
 
   def create
-    @shirt = Shirt.find_by(id: params[:shirt_id])
     @sale = @shirt.sales.new(sale_params)
 
     if @sale.save
       redirect_to sales_path
     else
-      @users = User.all
+      set_users
       render :new
     end
   end
@@ -27,5 +25,13 @@ class SalesController < ApplicationController
 
   def sale_params
     params.require(:sale).permit(:quantity, :buyer_id)
+  end
+
+  def set_shirt
+    @shirt = Shirt.find_by(id: params[:shirt_id])
+  end
+
+  def set_users
+    @users = User.all
   end
 end

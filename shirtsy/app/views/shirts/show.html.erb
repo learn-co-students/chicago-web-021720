@@ -8,4 +8,8 @@
   <li>Price: <%= number_to_currency(@shirt.price) %></li>
 </ul>
 
+<%= link_to "Edit this Shirt", edit_shirt_path(@shirt) %>
+
+<%= button_to "Delete this Shirt", shirt_path(@shirt), { method: :delete, data: { confirm: "Really? Right now? when we need to come together?" } } %>
+
 <%= link_to "Back to Shirts", shirts_path %>

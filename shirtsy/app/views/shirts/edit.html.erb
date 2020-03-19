@@ -1,4 +1,4 @@
-<h1>Make a Shirt!</h1>
+<h1>Edit a Shirt!</h1>
 
 <% @shirt.errors.full_messages.each do |error| %>
   <p><%= error %></p>
@@ -6,4 +6,4 @@
 
 <%= render partial: "form", locals: { shirt: @shirt, users: @users } %>
 
-<%= link_to "Back", shirts_path %>
+<%= link_to "Back", @shirt %>

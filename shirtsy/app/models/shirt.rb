@@ -7,4 +7,8 @@ class Shirt < ApplicationRecord
   def list_details
     "A nice #{color} shirt declaring \"#{message}\", costing merely #{price}"
   end
+
+  def creator_name
+    self.creator.name
+  end
 end
