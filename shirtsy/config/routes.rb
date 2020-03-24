@@ -5,8 +5,11 @@ Rails.application.routes.draw do
   end
 
   resources :sales, only: [:index]
-  resources :users, only: [:show]
-
+  resources :users, except: [:edit, :update, :destroy]
+  resources :sessions, only: [:new, :create]
+  
+  get "/login", to: "sessions#new"
+  delete "/logout", to: "sessions#destroy"
   get "/", to: "application#welcome"
   root "shirts#new"
 end

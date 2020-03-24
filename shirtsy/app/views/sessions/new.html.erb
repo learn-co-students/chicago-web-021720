@@ -1,0 +1,11 @@
+<h1>Login</h1>
+
+<%= flash[:error] %>
+
+<%= form_with url: "/sessions" do %>
+  Email
+  <%= text_field_tag :email %>
+  Password
+  <%= password_field_tag :password %>
+  <%= submit_tag 'Log In' %>
+<% end %>
