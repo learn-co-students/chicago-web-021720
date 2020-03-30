@@ -1,7 +1,17 @@
-<h1><%= @user.name.titleize %>'s Shirts:</h1>
+<% if current_user.id == @user.id %>
+  <h1>Your Shirts:</h1>
+<% else %>
+  <h1><%= @user.name.titleize %>'s Shirts:</h1>
+<% end %>
+
+<%= flash[:warning] %>
 
 <% @user.shirts.each do |shirt| %>
   <p><%= shirt.list_details %></p>
+<% end %>
+
+<% if current_user.id == @user.id %>
+  <%= link_to "add a new shirt", new_shirt_path %>
 <% end %>
 
 <%= link_to "back", users_path %>

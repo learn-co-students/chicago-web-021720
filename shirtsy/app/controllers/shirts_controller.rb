@@ -1,4 +1,6 @@
 class ShirtsController < ApplicationController
+  include SessionsHelper
+  before_action :authorize!, only: [:new, :create]
 
   def index
     @shirts = Shirt.all
@@ -10,7 +12,7 @@ class ShirtsController < ApplicationController
   end
 
   def create
-    @shirt = Shirt.new(shirt_params)
+    @shirt = current_user.shirts.new(shirt_params)
     if @shirt.save
       redirect_to @shirt.creator
     else
@@ -49,7 +51,7 @@ class ShirtsController < ApplicationController
   private
 
   def shirt_params
-    params.require(:shirt).permit(:color, :message, :image, :price, :creator_id)
+    params.require(:shirt).permit(:color, :message, :image, :price)
   end
 
   def set_shirt
