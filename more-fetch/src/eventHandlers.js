@@ -22,6 +22,7 @@ function handleCreatePoke(event, pokemonContainer) {
   fetch('http://localhost:3000/pokemon', reqObj)
     .then(resp => resp.json())
     .then(newPoke => {
+      coonsole.log(newPoke)
       const pokeHtml = renderSinglePokemon(newPoke)
       pokemonContainer.innerHTML += pokeHtml
     })
@@ -42,7 +43,6 @@ function handleCreatePoke(event, pokemonContainer) {
   //   update out FE to reflect the new pokemon
 
 
-
 function handleSearchInput(event, allPokemonData, pokemonContainer) {
   const filteredPokes = allPokemonData.filter(pokeObj => {
     return pokeObj.name.includes(event.target.value.toLowerCase())
@@ -53,12 +53,36 @@ function handleSearchInput(event, allPokemonData, pokemonContainer) {
 }
 
 
-function handleImgClick(event, allPokemonData) {
-  if (event.target.dataset.action === 'flip') {
+function handleContainerClick(event, allPokemonData) {
+  if (event.target.dataset.action === 'flip') { // checking if an image is what got clicked
     const clickedPokemon = allPokemonData.find((pokemonObject) => pokemonObject.id == event.target.dataset.id)
     event.target.src = (event.target.src === clickedPokemon.sprites.front ? clickedPokemon.sprites.back : clickedPokemon.sprites.front)
+  } else if (event.target.dataset.action === 'delete') {
+    const id = event.target.dataset.id
+    fetch(`http://localhost:3000/pokemon/${id}`, { method: 'DELETE'})
+      .then(resp => resp.json())
+      .then(data => {
+
+        console.log('new', event.target.previousElementSibling)
+
+        event.target.parentNode.parentNode.remove()
+      })
+
   }
 }
+
+
+  // add eventlistener to the entire dicv that holds all the cards
+  //
+  //  check if the thing that got clicked was a delete button
+  //   if true:
+  //      send a deltete fetch req to  estroy the instance in the BE
+//         grab id of pokemon to delete
+//         build the request object and url
+//
+//         once succeful
+    //      also remove the card of that pokemon from the FE
+  //      
 
 /************************* Helper Fns for Producing HTML **********************/
 function renderAllPokemon(pokemonArray) {
@@ -73,7 +97,7 @@ function renderSinglePokemon(pokemon) {
       <div class="pokemon-image">
         <img data-id="${pokemon.id}" data-action="flip" class="toggle-sprite" src="${pokemon.sprites.front}">
       </div>
-      <button data-action="delete" class="pokemon-button">Delete</button>
+      <button data-id="${pokemon.id}" data-action="delete" class="pokemon-button">Delete</button>
     </div>
   </div>`)
 }

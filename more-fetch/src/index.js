@@ -14,7 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   pokemonSearchInput.addEventListener('input', (event) => handleSearchInput(event, allPokemonData, pokemonContainer))
 
-  pokemonContainer.addEventListener('click', (event) => handleImgClick(event, allPokemonData))
+  pokemonContainer.addEventListener('click', (event) => handleContainerClick(event, allPokemonData))
 
   postPokeForm.addEventListener('submit', (event) => handleCreatePoke(event, pokemonContainer))
+
 })
