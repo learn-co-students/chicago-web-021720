@@ -4,6 +4,14 @@ class ShirtsController < ApplicationController
 
   def index
     @shirts = Shirt.all
+    respond_to do |format|
+      format.html {
+        render :index 
+      }
+      format.json { 
+        render json: @shirts
+      }
+    end
   end
 
   def new
